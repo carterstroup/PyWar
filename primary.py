@@ -13,6 +13,10 @@ class Ship:
     def TargetedMissile(self):
         pass
     
+    def __attr__(self):
+        return "Ship"
+    
+    
 class Plane:
     def __init__(self):
         self.health = 50
@@ -26,6 +30,9 @@ class Plane:
     def attack(self):
         pass
     
+    def __attr__(self):
+        return "Plane"
+    
 class Tank:
     def __init__(self):
         self.health = 100
@@ -38,22 +45,46 @@ class Tank:
     
     def bigShot(self):
         pass
+    
+    def __attr__(self):
+        return "Tank"
 
 selection = ""
 playerChoice = None
+computerChoice = None
 
-#Working on creating the computer selection. Need to use a random number to decide between the two options not chosen by the player.
-#Need to add attr to classes to be able to identify which option was chosen
-#def computerSelection():
-#    randNum = random.randint(1, 2)
-#    if playerChoice.selected == True
+def computerSelection():
+    randNum = random.randint(1, 2)
+    if playerChoice == "Tank":
+        if randNum == 1:
+            computerChoice = Ship()
+        elif randNum == 2:
+            computerChoice = Plane()
+        else:
+            print("An error has occured")
+    elif playerChoice == "Ship":
+        if randNum == 1:
+            computerChoice = Tank()
+        elif randNum == 2:
+            computerChoice = Plane()
+        else:
+            print("An error has occured")
+    elif playerChoice == "Plane":
+        if randNum == 1:
+            computerChoice = Ship()
+        elif randNum == 2:
+            computerChoice = Tank()
+        else:
+            print("An error has occured")
+    else:
+        print("An error has occured.")
 
-def initSelection():
-    if selection == "Tank":
+def initSelection(choice):
+    if choice == "Tank":
         playerChoice = Tank()
-    elif selection == "Plane":
+    elif choice == "Plane":
         playerChoice = Plane()
-    elif selection == "Ship":
+    elif choice == "Ship":
         playerChoice = Ship()
     else: 
         print("Please choose on of the three options and try again.")
@@ -73,9 +104,9 @@ print("Fighter Plane: 50 Health, Refueling Ability which adds 20 health, and an 
 print("Tank: 100 Health, Standard Shot does 20 damage, Mega Shot does 45 damage, but skips your next turn")
 selection = input()
 
-initSelection()
+initSelection(selection)
 
-print("You have selected {choice}! Great choice!").format(choice=selection)
+print("You have selected {choice}! Great choice!".format(choice=selection))
 print("Now the computer will choose its weapon.")
 
 
