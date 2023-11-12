@@ -1,5 +1,9 @@
 import random
 import time
+from termcolor import colored
+import os
+
+os.system('color')
 
 class Ship:
     def __init__(self):
@@ -58,7 +62,7 @@ class Plane:
         else: 
             print("An error has occured.")
         time.sleep(1.2)
-        print("Refuel Succesful")
+        print(colored("Refuel Succesful", "green"))
     
     def function2(self):
         if self == computerChoice:
@@ -68,7 +72,7 @@ class Plane:
         else: 
             print("An error has occured.")
         time.sleep(1.2)
-        print("Air Strike Succesful")
+        print(colored("Air Strike Succesful", "green"))
     
     def __repr__(self):
         return "Plane"
@@ -91,10 +95,10 @@ class Tank:
             else: 
                 print("An error has occured.")
             time.sleep(1.2)
-            print("Standard Shot fired!")
+            print(colored("Standard Shot fired!", "green"))
         elif self.skip == True:
             time.sleep(1)
-            print("Your turn was skipped because of your Mega Shot")
+            print(colored("Your turn was skipped because of your Mega Shot", "red"))
             self.skip = False
     
     def function2(self):
@@ -108,7 +112,7 @@ class Tank:
             else: 
                 print("An error has occured.")
             time.sleep(1.2)
-            print("Mega Shot Successful! Your next turn will be skipped")
+            print(colored("Mega Shot Successful! Your next turn will be skipped", "green"))
         elif self.skip == True:
             self.skip = False
             time.sleep(1.2)
@@ -166,7 +170,7 @@ def initSelection(choice):
     
     
 #Game Initilization 
-print("Welcome to PyWar!")
+print(colored("Welcome to PyWar!", "red"))
 print("To begin, what is your name?")
 name = input().strip()
 print("Hello, " + name)
@@ -175,7 +179,7 @@ time.sleep(1.2)
 
 selection = ""
 
-print("Now it is time to choose your weapon! Here are your choices:")
+print(colored("Now it is time to choose your weapon! Here are your choices:", "yellow"))
 time.sleep(1.2)
 print("(1) Battleship: 75 Health, 25 Damage Attack, 45 Damage Target Strikes (50% chance you miss!)")
 time.sleep(0.6)
@@ -204,7 +208,7 @@ elif initSelection(selection) == "Ship":
 else:
     print("An error has occured.")
 
-print("You have selected {choice}! Great choice!".format(choice=playerChoice))
+print(colored("You have selected {choice}! Great choice!".format(choice=playerChoice), "green"))
 time.sleep(1.2)
 print("Now the computer will choose its weapon.")
 
@@ -217,15 +221,15 @@ elif computerSelection(selection) == "Ship":
 else:
     print("An error has occured.")
 time.sleep(1.2)
-print("The Computer has chosen {choice}".format(choice=computerChoice))
+print(colored("The Computer has chosen {choice}".format(choice=computerChoice), "red"))
 time.sleep(1.2)
 print("Let the battle begin!")
 
 while playerChoice.health > 0 and computerChoice.health > 0:
-    print("Your Points: " + str(playerChoice.health))
+    print(colored("Your Points: " + str(playerChoice.health), "yellow"))
     print("Computer Points: " + str(computerChoice.health))
     time.sleep(1.2)
-    print("Please choose your move:")
+    print(colored("Please choose your move:", "blue"))
     print(playerChoice.attackInfo)
     nextMove = input().strip()
     
@@ -260,9 +264,9 @@ while playerChoice.health > 0 and computerChoice.health > 0:
         
 if computerChoice.health <= 0:
     time.sleep(1.2)
-    print("You Win!")
+    print(colored("You Win!", "green"))
 elif playerChoice.health <= 0:
     time.sleep(1.2)
-    print("You lose! Computer Wins!")
+    print(colored("You lose! Computer Wins!", "red"))
 else:
     print("An error has occured")
