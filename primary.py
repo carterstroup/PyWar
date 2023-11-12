@@ -1,4 +1,5 @@
 import random
+import time
 
 class Ship:
     def __init__(self):
@@ -7,7 +8,7 @@ class Ship:
         self.targetedMissile = 45
         self.selected = False
         self.skip = False
-        self.attackInfo = "(1) Standard Shot: 25 Damage \n(2) Target Strikes: 45 Damage but there is a 50% chance you miss!"
+        self.attackInfo = "(1) Standard Shot: 25 Damage \n(2) Target Strike: 45 Damage (50% chance you miss!)"
         
     def function1(self):
         if self == computerChoice:
@@ -16,6 +17,7 @@ class Ship:
             computerChoice.health -= 25
         else: 
             print("An error has occured.")
+        time.sleep(1.2)
         print("A standard shot has been fired!")
     
     def function2(self):
@@ -27,8 +29,10 @@ class Ship:
                 computerChoice.health -= 45
             else: 
                 print("An error has occured.")
+            time.sleep(1.2)
             print("Mega Shot Succesful!")
         elif getRandInt == 2:
+            time.sleep(1.2)
             print("Mega Shot Failed!")
         else:
             print("An error has occured")
@@ -53,6 +57,7 @@ class Plane:
             playerChoice.health += 20
         else: 
             print("An error has occured.")
+        time.sleep(1.2)
         print("Refuel Succesful")
     
     def function2(self):
@@ -62,6 +67,7 @@ class Plane:
             computerChoice.health -= 35
         else: 
             print("An error has occured.")
+        time.sleep(1.2)
         print("Air Strike Succesful")
     
     def __repr__(self):
@@ -84,8 +90,10 @@ class Tank:
                 computerChoice.health -= 20
             else: 
                 print("An error has occured.")
+            time.sleep(1.2)
             print("Standard Shot fired!")
         elif self.skip == True:
+            time.sleep(1)
             print("Your turn was skipped because of your Mega Shot")
             self.skip = False
     
@@ -99,9 +107,11 @@ class Tank:
                 self.skip = True
             else: 
                 print("An error has occured.")
+            time.sleep(1.2)
             print("Mega Shot Successful! Your next turn will be skipped")
         elif self.skip == True:
             self.skip = False
+            time.sleep(1.2)
             print("Your turn was skipped because of your Mega Shot")
         else:
             print("An error has occured")
@@ -143,12 +153,12 @@ def computerSelection(choice):
 
 def initSelection(choice):
     theChoice = ""
-    if choice == "Tank":
-        theChoice = "Tank"
-    elif choice == "Plane":
-        theChoice = "Plane"
-    elif choice == "Ship":
+    if choice == 1:
         theChoice = "Ship"
+    elif choice == 2:
+        theChoice = "Plane"
+    elif choice == 3:
+        theChoice = "Tank"
     else: 
         print("Please choose on of the three options and try again.")
         selection = input()    
@@ -161,12 +171,15 @@ print("Welcome to PyWar!")
 print("To begin, what is your name?")
 name = input()
 print("Hello, " + name)
-
+time.sleep(1.2)
 #Choose Weapon
 print("Now it is time to choose your weapon! Here are your choices:")
-print("Battleship: 75 Health, 25 Damage Standard Shot, 45 Damage on Target Strikes but there is a 50% chance you miss! To choose the Battleship, enter 'Ship'")
-print("Fighter Plane: 50 Health, Refueling Ability which adds 20 health, and an attack that does 35 damage. Enter 'Plane' to choose the Fighter Plane.")
-print("Tank: 100 Health, Standard Shot does 20 damage, Mega Shot does 35 damage, but skips your next turn")
+time.sleep(1.2)
+print("(1) Battleship: 75 Health, 25 Damage Attack, 45 Damage Target Strikes (50% chance you miss!)")
+time.sleep(0.6)
+print("(2) Fighter Plane: 50 Health, Refueling Ability (Adds 20 Health), 35 Damage Attack.")
+time.sleep(0.6)
+print("(3) Tank: 100 Health, 20 Damage Attack, 35 Damage Mega Shot (skips your next turn)")
 selection = input()
 
 if initSelection(selection) == "Tank":
@@ -179,6 +192,7 @@ else:
     print("An error has occured.")
 
 print("You have selected {choice}! Great choice!".format(choice=playerChoice))
+time.sleep(1.2)
 print("Now the computer will choose its weapon.")
 
 if computerSelection(selection) == "Tank":
@@ -189,13 +203,15 @@ elif computerSelection(selection) == "Ship":
     computerChoice = Ship()
 else:
     print("An error has occured.")
-
+time.sleep(1.2)
 print("The Computer has chosen {choice}".format(choice=computerChoice))
+time.sleep(1.2)
 print("Let the battle begin!")
 
 while playerChoice.health > 0 and computerChoice.health > 0:
     print("Your Points: " + str(playerChoice.health))
     print("Computer Points: " + str(computerChoice.health))
+    time.sleep(1.2)
     print("Please choose your move:")
     print(playerChoice.attackInfo)
     nextMove = input()
@@ -205,9 +221,9 @@ while playerChoice.health > 0 and computerChoice.health > 0:
         playerChoice.function2()
     else:
         print("An error has occured.")
-        
+    time.sleep(1.2)
     print("Now it is the computer's turn!")
-    
+    time.sleep(1.2)
     compRandChoice = random.randint(1,2)
     
     if compRandChoice == 1:
@@ -218,8 +234,10 @@ while playerChoice.health > 0 and computerChoice.health > 0:
         print("An error has occured")
         
 if computerChoice.health <= 0:
+    time.sleep(1.2)
     print("You Win!")
 elif playerChoice.health <= 0:
+    time.sleep(1.2)
     print("You lose! Computer Wins!")
 else:
     print("An error has occured")
