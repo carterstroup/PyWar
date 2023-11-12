@@ -153,11 +153,11 @@ def computerSelection(choice):
 
 def initSelection(choice):
     theChoice = ""
-    if choice == 1:
+    if choice == "1":
         theChoice = "Ship"
-    elif choice == 2:
+    elif choice == "2":
         theChoice = "Plane"
-    elif choice == 3:
+    elif choice == "3":
         theChoice = "Tank"
     else: 
         print("Please choose on of the three options and try again.")
@@ -221,6 +221,8 @@ while playerChoice.health > 0 and computerChoice.health > 0:
         playerChoice.function2()
     else:
         print("An error has occured.")
+        if computerChoice.health <= 0:
+            break
     time.sleep(1.2)
     print("Now it is the computer's turn!")
     time.sleep(1.2)
