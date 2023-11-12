@@ -160,8 +160,7 @@ def initSelection(choice):
     elif choice == "3":
         theChoice = "Tank"
     else: 
-        print("Please choose on of the three options and try again.")
-        selection = input()    
+        print("Something went wrong.")
         
     return theChoice
     
@@ -169,10 +168,13 @@ def initSelection(choice):
 #Game Initilization 
 print("Welcome to PyWar!")
 print("To begin, what is your name?")
-name = input()
+name = input().strip()
 print("Hello, " + name)
 time.sleep(1.2)
 #Choose Weapon
+
+selection = ""
+
 print("Now it is time to choose your weapon! Here are your choices:")
 time.sleep(1.2)
 print("(1) Battleship: 75 Health, 25 Damage Attack, 45 Damage Target Strikes (50% chance you miss!)")
@@ -180,8 +182,19 @@ time.sleep(0.6)
 print("(2) Fighter Plane: 50 Health, Refueling Ability (Adds 20 Health), 35 Damage Attack.")
 time.sleep(0.6)
 print("(3) Tank: 100 Health, 20 Damage Attack, 35 Damage Mega Shot (skips your next turn)")
-selection = input()
+selection = input().strip()
 
+while True:   
+    if selection == "1":
+        break
+    elif selection == "2":
+        break
+    elif selection == "3":
+        break
+    else:
+        print("Enter a number 1-3.")
+        selection = input().strip()
+    
 if initSelection(selection) == "Tank":
     playerChoice = Tank()
 elif initSelection(selection) == "Plane":
@@ -214,7 +227,17 @@ while playerChoice.health > 0 and computerChoice.health > 0:
     time.sleep(1.2)
     print("Please choose your move:")
     print(playerChoice.attackInfo)
-    nextMove = input()
+    nextMove = input().strip()
+    
+    while True:   
+        if nextMove == "1":
+            break
+        elif nextMove == "2":
+            break
+        else:
+            print("Enter a number 1-2.")
+            nextMove = input().strip()
+    
     if nextMove == "1":
         playerChoice.function1()
     elif nextMove == "2":
