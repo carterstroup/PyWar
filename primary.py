@@ -126,21 +126,21 @@ computerChoice = None
 def computerSelection(choice):
     randNum = random.randint(1, 2)
     theChoice = ""
-    if choice == "Tank":
+    if choice == "3":
         if randNum == 1:
             theChoice = "Ship"
         elif randNum == 2:
             theChoice = "Plane"
         else:
             print("An error has occured")
-    elif choice == "Ship":
+    elif choice == "1":
         if randNum == 1:
             theChoice = "Tank"
         elif randNum == 2:
             theChoice = "Plane"
         else:
             print("An error has occured")
-    elif choice == "Plane":
+    elif choice == "2":
         if randNum == 1:
             theChoice = "Ship"
         elif randNum == 2:
