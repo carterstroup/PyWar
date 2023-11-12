@@ -192,8 +192,8 @@ print("The Computer has chosen {choice}".format(choice=computerChoice))
 print("Let the battle begin!")
 
 while playerChoice.health > 0 and computerChoice.health > 0:
-    print("Your Points: " + playerChoice.health)
-    print("Computer Points: " + computerChoice.health)
+    print("Your Points: " + str(playerChoice.health))
+    print("Computer Points: " + str(computerChoice.health))
     print("Please choose your move:")
     print(playerChoice.attackInfo)
     nextMove = input()
