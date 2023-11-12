@@ -136,23 +136,23 @@ def computerSelection(choice):
         elif randNum == 2:
             theChoice = "Plane"
         else:
-            print("An error has occured")
+            print("An error has occured1")
     elif choice == "1":
         if randNum == 1:
             theChoice = "Tank"
         elif randNum == 2:
             theChoice = "Plane"
         else:
-            print("An error has occured")
+            print("An error has occured2")
     elif choice == "2":
         if randNum == 1:
             theChoice = "Ship"
         elif randNum == 2:
             theChoice = "Tank"
         else:
-            print("An error has occured")
+            print("An error has occured3")
     else:
-        print("An error has occured")
+        print("An error has occured4")
     return theChoice
 
 def initSelection(choice):
@@ -205,8 +205,9 @@ elif initSelection(selection) == "Plane":
     playerChoice = Plane()
 elif initSelection(selection) == "Ship":
     playerChoice = Ship()
+    print("Not an error here")
 else:
-    print("An error has occured.")
+    print("An error has occured.7")
 
 print(colored("You have selected {choice}! Great choice!".format(choice=playerChoice), "green"))
 time.sleep(1.2)
@@ -229,38 +230,46 @@ while playerChoice.health > 0 and computerChoice.health > 0:
     print(colored("Your Points: " + str(playerChoice.health), "yellow"))
     print("Computer Points: " + str(computerChoice.health))
     time.sleep(1.2)
-    print(colored("Please choose your move:", "blue"))
-    print(playerChoice.attackInfo)
-    nextMove = input().strip()
-    
-    while True:   
-        if nextMove == "1":
-            break
-        elif nextMove == "2":
-            break
-        else:
-            print("Enter a number 1-2.")
-            nextMove = input().strip()
-    
-    if nextMove == "1":
-        playerChoice.function1()
-    elif nextMove == "2":
-        playerChoice.function2()
+    if playerChoice.skip == True:
+        print(colored("Your turn was skipped because of your Mega Shot", "red"))
+        playerChoice.skip = False
     else:
-        print("An error has occured.")
-    if computerChoice.health <= 0:
-        break
+        print(colored("Please choose your move:", "blue"))
+        print(playerChoice.attackInfo)
+        nextMove = input().strip()
+    
+        while True:   
+            if nextMove == "1":
+                break
+            elif nextMove == "2":
+                break
+            else:
+                print("Enter a number 1-2.")
+                nextMove = input().strip()
+            
+        if nextMove == "1":
+            playerChoice.function1()
+        elif nextMove == "2":
+            playerChoice.function2()
+        else:
+            print("An error has occured.")
+        if computerChoice.health <= 0:
+            break
     time.sleep(1.2)
     print("Now it is the computer's turn!")
     time.sleep(1.2)
     compRandChoice = random.randint(1,2)
     
-    if compRandChoice == 1:
-        computerChoice.function1()
-    elif compRandChoice == 2:
-        computerChoice.function2()
+    if computerChoice.skip == True:
+        print(colored("The Computer's turn was skipped because of your Mega Shot", "red"))
+        computerChoice.skip = False
     else:
-        print("An error has occured")
+        if compRandChoice == 1:
+            computerChoice.function1()
+        elif compRandChoice == 2:
+            computerChoice.function2()
+        else:
+            print("An error has occured")
         
 if computerChoice.health <= 0:
     time.sleep(1.2)
