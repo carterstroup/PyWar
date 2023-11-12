@@ -7,7 +7,7 @@ class Ship:
         self.targetedMissile = 45
         self.selected = False
         self.skip = False
-        self.attackInfo = "(1) Standard Shot: 25 Damage \n (2) Target Strikes: 45 Damage but there is a 50% chance you miss!"
+        self.attackInfo = "(1) Standard Shot: 25 Damage \n(2) Target Strikes: 45 Damage but there is a 50% chance you miss!"
         
     def function1(self):
         if self == computerChoice:
@@ -44,7 +44,7 @@ class Plane:
         self.attack = 35
         self.selected = False
         self.skip = False
-        self.attackInfo = "(1) Refuel: adds 20 health \n (2) Air Strike: 35 damage."
+        self.attackInfo = "(1) Refuel: adds 20 health \n(2) Air Strike: 35 damage."
         
     def function1(self):
         if self == computerChoice:
@@ -74,7 +74,7 @@ class Tank:
         self.pwrShot = 45
         self.selected = False
         self.skip = False
-        self.attackInfo = "(1) Standard Shot: 20 damage \n (2) Mega Shot: 45 damage, but skips your next turn"
+        self.attackInfo = "(1) Standard Shot: 20 damage \n(2) Mega Shot: 35 damage, but skips your next turn"
         
     def function1(self):
         if self.skip == False:
@@ -84,6 +84,7 @@ class Tank:
                 computerChoice.health -= 20
             else: 
                 print("An error has occured.")
+            print("Standard Shot fired!")
         elif self.skip == True:
             print("Your turn was skipped because of your Mega Shot")
             self.skip = False
@@ -91,13 +92,14 @@ class Tank:
     def function2(self):
         if self.skip == False:
             if self == computerChoice:
-                playerChoice.health -= 45
+                playerChoice.health -= 35
                 self.skip = True
             elif self == playerChoice:
-                computerChoice.health -= 45
+                computerChoice.health -= 35
                 self.skip = True
             else: 
                 print("An error has occured.")
+            print("Mega Shot Successful! Your next turn will be skipped")
         elif self.skip == True:
             self.skip = False
             print("Your turn was skipped because of your Mega Shot")
@@ -164,7 +166,7 @@ print("Hello, " + name)
 print("Now it is time to choose your weapon! Here are your choices:")
 print("Battleship: 75 Health, 25 Damage Standard Shot, 45 Damage on Target Strikes but there is a 50% chance you miss! To choose the Battleship, enter 'Ship'")
 print("Fighter Plane: 50 Health, Refueling Ability which adds 20 health, and an attack that does 35 damage. Enter 'Plane' to choose the Fighter Plane.")
-print("Tank: 100 Health, Standard Shot does 20 damage, Mega Shot does 45 damage, but skips your next turn")
+print("Tank: 100 Health, Standard Shot does 20 damage, Mega Shot does 35 damage, but skips your next turn")
 selection = input()
 
 if initSelection(selection) == "Tank":
