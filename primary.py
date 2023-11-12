@@ -13,7 +13,7 @@ class Ship:
     def TargetedMissile(self):
         pass
     
-    def __attr__(self):
+    def __repr__(self):
         return "Ship"
     
     
@@ -30,7 +30,7 @@ class Plane:
     def attack(self):
         pass
     
-    def __attr__(self):
+    def __repr__(self):
         return "Plane"
     
 class Tank:
@@ -46,49 +46,54 @@ class Tank:
     def bigShot(self):
         pass
     
-    def __attr__(self):
+    def __repr__(self):
         return "Tank"
 
 selection = ""
 playerChoice = None
 computerChoice = None
 
-def computerSelection():
+def computerSelection(choice):
     randNum = random.randint(1, 2)
-    if playerChoice == "Tank":
+    theChoice = ""
+    if choice == "Tank":
         if randNum == 1:
-            computerChoice = Ship()
+            theChoice = "Ship"
         elif randNum == 2:
-            computerChoice = Plane()
+            theChoice = "Plane"
         else:
             print("An error has occured")
-    elif playerChoice == "Ship":
+    elif choice == "Ship":
         if randNum == 1:
-            computerChoice = Tank()
+            theChoice = "Tank"
         elif randNum == 2:
-            computerChoice = Plane()
+            theChoice = "Plane"
         else:
             print("An error has occured")
-    elif playerChoice == "Plane":
+    elif choice == "Plane":
         if randNum == 1:
-            computerChoice = Ship()
+            theChoice = "Ship"
         elif randNum == 2:
-            computerChoice = Tank()
+            theChoice = "Tank"
         else:
             print("An error has occured")
     else:
-        print("An error has occured.")
+        print("An error has occured")
+    return theChoice
 
 def initSelection(choice):
+    theChoice = ""
     if choice == "Tank":
-        playerChoice = Tank()
+        theChoice = "Tank"
     elif choice == "Plane":
-        playerChoice = Plane()
+        theChoice = "Plane"
     elif choice == "Ship":
-        playerChoice = Ship()
+        theChoice = "Ship"
     else: 
         print("Please choose on of the three options and try again.")
         selection = input()    
+        
+    return theChoice
     
     
 #Game Initilization 
@@ -104,9 +109,26 @@ print("Fighter Plane: 50 Health, Refueling Ability which adds 20 health, and an 
 print("Tank: 100 Health, Standard Shot does 20 damage, Mega Shot does 45 damage, but skips your next turn")
 selection = input()
 
-initSelection(selection)
+if initSelection(selection) == "Tank":
+    playerChoice = Tank()
+elif initSelection(selection) == "Plane":
+    playerChoice = Plane()
+elif initSelection(selection) == "Ship":
+    playerChoice = Ship()
+else:
+    print("An error has occured.")
 
-print("You have selected {choice}! Great choice!".format(choice=selection))
+print("You have selected {choice}! Great choice!".format(choice=playerChoice))
 print("Now the computer will choose its weapon.")
 
+if computerSelection(selection) == "Tank":
+    computerChoice = Tank()
+elif computerSelection(selection) == "Plane":
+    computerChoice = Plane()
+elif computerSelection(selection) == "Ship":
+    computerChoice = Ship()
+else:
+    print("An error has occured.")
 
+print("The Computer has chosen {choice}".format(choice=computerChoice))
+print("Let the battle begin!")
