@@ -221,8 +221,8 @@ while playerChoice.health > 0 and computerChoice.health > 0:
         playerChoice.function2()
     else:
         print("An error has occured.")
-        if computerChoice.health <= 0:
-            break
+    if computerChoice.health <= 0:
+        break
     time.sleep(1.2)
     print("Now it is the computer's turn!")
     time.sleep(1.2)
