@@ -6,12 +6,32 @@ class Ship:
         self.standardShot = 25
         self.targetedMissile = 45
         self.selected = False
+        self.skip = False
+        self.attackInfo = "(1) Standard Shot: 25 Damage \n (2) Target Strikes: 45 Damage but there is a 50% chance you miss!"
         
-    def StandardShot(self):
-        pass
+    def function1(self):
+        if self == computerChoice:
+            playerChoice.health -= 25
+        elif self == playerChoice:
+            computerChoice.health -= 25
+        else: 
+            print("An error has occured.")
+        print("A standard shot has been fired!")
     
-    def TargetedMissile(self):
-        pass
+    def function2(self):
+        getRandInt = random.randint(1,2)
+        if getRandInt == 1:
+            if self == computerChoice:
+                playerChoice.health -= 45
+            elif self == playerChoice:
+                computerChoice.health -= 45
+            else: 
+                print("An error has occured.")
+            print("Mega Shot Succesful!")
+        elif getRandInt == 2:
+            print("Mega Shot Failed!")
+        else:
+            print("An error has occured")
     
     def __repr__(self):
         return "Ship"
@@ -23,12 +43,26 @@ class Plane:
         self.refHealth = 20
         self.attack = 35
         self.selected = False
+        self.skip = False
+        self.attackInfo = "(1) Refuel: adds 20 health \n (2) Air Strike: 35 damage."
         
-    def refuel(self):
-        pass
+    def function1(self):
+        if self == computerChoice:
+            computerChoice.health += 20
+        elif self == playerChoice:
+            playerChoice.health += 20
+        else: 
+            print("An error has occured.")
+        print("Refuel Succesful")
     
-    def attack(self):
-        pass
+    def function2(self):
+        if self == computerChoice:
+            playerChoice.health -= 35
+        elif self == playerChoice:
+            computerChoice.health -= 35
+        else: 
+            print("An error has occured.")
+        print("Air Strike Succesful")
     
     def __repr__(self):
         return "Plane"
@@ -39,12 +73,36 @@ class Tank:
         self.stdShot = 20
         self.pwrShot = 45
         self.selected = False
+        self.skip = False
+        self.attackInfo = "(1) Standard Shot: 20 damage \n (2) Mega Shot: 45 damage, but skips your next turn"
         
-    def takeShot(self):
-        pass
+    def function1(self):
+        if self.skip == False:
+            if self == computerChoice:
+                playerChoice.health -= 20
+            elif self == playerChoice:
+                computerChoice.health -= 20
+            else: 
+                print("An error has occured.")
+        elif self.skip == True:
+            print("Your turn was skipped because of your Mega Shot")
+            self.skip = False
     
-    def bigShot(self):
-        pass
+    def function2(self):
+        if self.skip == False:
+            if self == computerChoice:
+                playerChoice.health -= 45
+                self.skip = True
+            elif self == playerChoice:
+                computerChoice.health -= 45
+                self.skip = True
+            else: 
+                print("An error has occured.")
+        elif self.skip == True:
+            self.skip = False
+            print("Your turn was skipped because of your Mega Shot")
+        else:
+            print("An error has occured")
     
     def __repr__(self):
         return "Tank"
@@ -132,3 +190,34 @@ else:
 
 print("The Computer has chosen {choice}".format(choice=computerChoice))
 print("Let the battle begin!")
+
+while playerChoice.health > 0 and computerChoice.health > 0:
+    print("Your Points: " + playerChoice.health)
+    print("Computer Points: " + computerChoice.health)
+    print("Please choose your move:")
+    print(playerChoice.attackInfo)
+    nextMove = input()
+    if nextMove == "1":
+        playerChoice.function1()
+    elif nextMove == "2":
+        playerChoice.function2()
+    else:
+        print("An error has occured.")
+        
+    print("Now it is the computer's turn!")
+    
+    compRandChoice = random.randint(1,2)
+    
+    if compRandChoice == 1:
+        computerChoice.function1()
+    elif compRandChoice == 2:
+        computerChoice.function2()
+    else:
+        print("An error has occured")
+        
+if computerChoice.health <= 0:
+    print("You Win!")
+elif playerChoice.health <= 0:
+    print("You lose! Computer Wins!")
+else:
+    print("An error has occured")
