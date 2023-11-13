@@ -162,7 +162,6 @@ def computerSelection(choice):
             print("An error has occurred. Random number was not properly configured. Line 162")
     else:
         print("An error has occurred. Random number was not properly configured. Line 164")
-    time.sleep(0.2)
     return theChoice
 
 #function for creating an instance for the user weapon based on their input
@@ -225,11 +224,12 @@ time.sleep(1.2)
 print("Now The Computer Will Choose Its Weapon")
 
 #iterate through computer selection choices from above function then announces their weapon and battle start
-if computerSelection(selection) == "Tank":
+ComputerChosenVar = computerSelection(selection)
+if ComputerChosenVar == "Tank":
     computerChoice = Tank()
-elif computerSelection(selection) == "Plane":
+elif ComputerChosenVar == "Plane":
     computerChoice = Plane()
-elif computerSelection(selection) == "Ship":
+elif ComputerChosenVar == "Ship":
     computerChoice = Ship()
 else:
     print("An error has occurred. Computer selection does not match a valid option. Line 234")
