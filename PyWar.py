@@ -24,7 +24,7 @@ class Ship:
         else: 
             print("An error has occurred. Could not identify which entity to deduct health from. Line 25")
         time.sleep(1.2)
-        print("Shots Fired! 25 Damage!")
+        print(colored("Shots Fired! 25 Damage!", "green"))
     
     #This is for the 45 Damage shot with a 50% chance of missing. Similarly, it reads which entity should be deducted and
     #uses random to determine the hit or miss
@@ -38,10 +38,10 @@ class Ship:
             else: 
                 print("An error has occurred. Could not identify which entity to deduct health from. Line 39")
             time.sleep(1.2)
-            print("Mega Shot Successful!")
+            print(colored("Target Strike Successful!", "green"))
         elif getRandInt == 2:
             time.sleep(1.2)
-            print("Mega Shot Failed!")
+            print(colored("Target Strike Failed!", "red"))
         else:
             print("An error has occurred. Random integer was not properly defined. Line 46")
     
