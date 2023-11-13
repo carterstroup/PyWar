@@ -162,6 +162,7 @@ def computerSelection(choice):
             print("An error has occurred. Random number was not properly configured. Line 162")
     else:
         print("An error has occurred. Random number was not properly configured. Line 164")
+    time.sleep(0.2)
     return theChoice
 
 #function for creating an instance for the user weapon based on their input
