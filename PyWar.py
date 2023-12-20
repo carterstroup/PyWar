@@ -2,10 +2,11 @@
 import random
 import time
 from termcolor import colored
-import os
+import os, sys
 
 #configure the termcolor module for the appropriate device
-os.system('color')
+if sys.platform == "win32":
+    os.system('color')
 
 #class definitions
 class Ship:
