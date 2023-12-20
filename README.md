@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)](CONTRIBUTING.md)
 
-Welcome to the Terminal War Game – a thrilling Python-based game that puts your strategy and tactics to the test in the command line!
+Welcome to PyWar – a thrilling Python-based game that puts your strategy and tactics to the test in the command line!
 
 ![Terminal War Game Demo](demo.gif)
 
@@ -55,9 +55,12 @@ To get started with the Terminal War Game, follow these steps:
 3. **Win the War:**
     Defeat your opponents using clever tactics and strategic decisions.
 
-## Contributing
+## Technical Details
 
-I welcome contributions to the PyWar! If you'd like to contribute, please check out our [Contribution Guidelines](CONTRIBUTING.md).
+The PyWar program is a single-script application created with the intention of showing base-level competency with object-oriented programming using the Python language. The program uses three distinct class structures, each with its own class variables and methods. Additionally, the project uses the [Termcolor](https://pypi.org/project/termcolor/) external package, handles user inputs even when invalid, and demonstrates an understanding of while loops.
+
+First Functional Date: November 11, 2023
+Education Level at the Time of Development: Junior in High School
 
 ## License
 
