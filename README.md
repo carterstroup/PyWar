@@ -1,6 +1,6 @@
 # PyWar
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/carterstroup/PyWar/blob/main/LICENSE.txt)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 
 Welcome to PyWar – a thrilling Python-based game that puts your strategy and tactics to the test in the command line!
@@ -54,4 +54,4 @@ Education Level at the Time of Development: Junior in High School
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/carterstroup/PyWar/blob/main/LICENSE.txt) file for details.
