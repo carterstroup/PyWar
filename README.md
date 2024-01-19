@@ -7,7 +7,7 @@ Welcome to PyWar – a thrilling Python-based game that puts your strategy and t
 
 ## Getting Started
 
-To get started with the Terminal War Game, follow these steps:
+To get started with PyWar, follow these steps:
 
 1. **Clone the Repository:**
     ```bash
@@ -22,6 +22,7 @@ To get started with the Terminal War Game, follow these steps:
 
 3. **Run the Game:**
     ```bash
+    cd Game
     python main.py
     ```
 
@@ -35,7 +36,7 @@ To get started with the Terminal War Game, follow these steps:
 
 1. **Start the Game:**
     ```bash
-    python PyWar.py
+    python main.py
     ```
 
 2. **Follow On-Screen Instructions:**
