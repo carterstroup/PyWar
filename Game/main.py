@@ -128,10 +128,10 @@ def validate_attack_options(player_input, player, computer):
     while True:   
         if choice == "1":
             player.weapon.function1(player, computer)
-            break
+            return 1
         elif choice == "2":
             player.weapon.function2(player, computer)
-            break
+            return 2
         else:
             print("Please Enter 1 or 2")
             choice = input().strip()  
@@ -157,17 +157,25 @@ def computer_skip(computer):
         return False
 
 #Gets the computer's attack option.
-def computer_attack(player, computer):
+def computer_attack(player, computer, testNum=0):
     time.sleep(1.2)
     print("Now It Is The Computer's Turn!")
     time.sleep(1.2)
     
     if computer_skip(computer) == False:
         compRandChoice = random.randint(1,2)
+        #testing purposes##################
+        if testNum == 1:
+            compRandChoice = 1
+        elif testNum == 2:
+            compRandChoice = 2
+        ##################################
         if compRandChoice == 1:
             computer.weapon.function1(player, computer)
+            return 1
         elif compRandChoice == 2:
             computer.weapon.function2(player, computer)
+            return 2
 
 #Sees if either party has won, if so it prints the result and ends the program.            
 def check_for_win(player, computer):

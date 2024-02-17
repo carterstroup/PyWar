@@ -45,8 +45,16 @@ class Ship:
     
     #This is for the 45 Damage shot with a 50% chance of missing. Similarly, it reads which entity should be deducted and
     #uses random to determine the hit or miss
-    def function2(self, player, computer):
+    def function2(self, player, computer, testInt = 0):
         getRandInt = random.randint(1,2)
+        #for testing purposes###########
+        if testInt == 0:
+            pass
+        elif testInt == 1:
+            getRandInt = 1
+        elif testInt == 2:
+            getRandInt = 2
+        ################################
         if getRandInt == 1:
             if self == computer.weapon:
                 player.health -= 45
